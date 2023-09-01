@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "https://proj4-mern-crud-backend-io.onrender.com";
+// const baseUrl = "https://proj4-mern-crud-backend-io.onrender.com";
+const baseUrl = "http://localhost:5000";
 
 const getAllToDo = (setToDo) => {
   axios.get(baseUrl).then(({ data }) => {

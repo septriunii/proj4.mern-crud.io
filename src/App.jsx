@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import ToDo from "./components/ToDo";
 import {
   getAllToDo,
@@ -7,6 +6,8 @@ import {
   updateToDo,
   deleteToDo,
 } from "./utils/HandleApis";
+import mern from "./data/img";
+import ToggleButton from "./components/ToggleButton";
 
 function App() {
   const [toDo, setToDo] = useState([]);
@@ -25,27 +26,40 @@ function App() {
   };
 
   return (
-    <>
-      <h1 className="font-bold mb-7">MERN CRUD</h1>
-      <div className=" flex gap-2 mb-4">
-        <input
-          type="text"
-          placeholder="Add TODOS"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="p-2"
-        />
-        <button
-          onClick={
-            isUpdating
-              ? () => updateToDo(toDoId, text, setToDo, setText, setIsUpdating)
-              : () => addToDo(text, setText, setToDo)
-          }
-        >
-          {isUpdating ? "Update" : "Add"}
-        </button>
+    <div className="flex flex-col gap-4 mt-28 mb-10 bg-zinc-700 bg-opacity-25 p-5">
+      <ToggleButton />
+      <div className="flex flex-col items-center gap-3">
+        <h1 className="font-bold">MERN CRUD</h1>
+        <div className="flex gap-2 p-2">
+          {mern.map((mern) => (
+            <div key={mern.id} className="h-10 w-10">
+              <img src={mern.img} alt="" />
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="Add Anything"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="p-2 w-72 text-gray-700 outline-none"
+          />
+          <button
+            className="hover:border-gray-800"
+            onClick={
+              isUpdating
+                ? () =>
+                    updateToDo(toDoId, text, setToDo, setText, setIsUpdating)
+                : () => addToDo(text, setText, setToDo)
+            }
+          >
+            {isUpdating ? "Update" : "Add"}
+          </button>
+        </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 bg-zinc-900 bg-opacity-70 p-2 rounded">
         {toDo.map((item) => (
           <ToDo
             key={item._id}
@@ -55,7 +69,7 @@ function App() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
