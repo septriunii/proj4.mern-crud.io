@@ -35,8 +35,8 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div id={theme} className="h-screen  flex justify-center w-screen">
-        <div className="flex flex-col gap-4 mt-20 mb-5 w-[40%] h-auto container  p-5">
+      <div id={theme} className="flex justify-center w-screen min-h-screen ">
+        <div className="flex flex-col gap-4 mt-20 w-[80%]  md:w-[60%]  lg:w-[40%] h-auto container p-4 mb-6">
           <ReactSwitch
             onChange={toggleTheme}
             checked={theme === "dark"}
@@ -53,7 +53,7 @@ function App() {
               ))}
             </div>
 
-            <div className=" w-[70%] flex gap-3">
+            <div className="w-[90%] md:w-[70%] lg:w-[85%] flex gap-3">
               <input
                 type="text"
                 placeholder="Add Anything"
@@ -80,7 +80,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-3  p-2 rounded todos">
+          <div className="flex flex-col gap-3  p-2 rounded todos ">
             {toDo.map((item) => (
               <ToDo
                 key={item._id}

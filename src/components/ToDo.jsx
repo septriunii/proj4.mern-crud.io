@@ -7,8 +7,8 @@ const ToDo = ({ text, updateMode, deleteToDo }) => {
     <div className="bg-zinc-700 flex justify-between p-3 bg-opacity-60 rounded-sm w-full">
       <div className="flex ">{text}</div>
       <div className="icons flex items-center gap-2">
-        <BiEdit className="icon" onClick={updateMode} />
-        <AiFillDelete className="icon" onClick={deleteToDo} />
+        <BiEdit className="icon cursor-pointer" onClick={updateMode} />
+        <AiFillDelete className="icon cursor-pointer" onClick={deleteToDo} />
       </div>
     </div>
   );
