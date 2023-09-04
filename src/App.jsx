@@ -35,14 +35,14 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div id={theme} className="flex justify-center w-screen min-h-screen ">
+      <div
+        id={theme}
+        className="flex justify-center w-screen min-h-screen relative"
+      >
+        <div className="absolute h-auto w-auto top-5 right-10">
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        </div>
         <div className="flex flex-col gap-4 mt-20 w-[80%]  md:w-[60%]  lg:w-[40%] h-auto container p-4 mb-6">
-          <ReactSwitch
-            onChange={toggleTheme}
-            checked={theme === "dark"}
-            className="absolute top-3 right-3"
-          />
-
           <div className="flex flex-col items-center gap-3">
             <h1 className="font-bold">MERN CRUD</h1>
             <div className="flex gap-2 p-2">
@@ -80,7 +80,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-3  p-2 rounded todos ">
+          <div className="flex flex-col gap-3  p-2 rounded todos">
             {toDo.map((item) => (
               <ToDo
                 key={item._id}
